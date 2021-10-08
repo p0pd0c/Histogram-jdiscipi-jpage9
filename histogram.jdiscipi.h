@@ -1,3 +1,5 @@
+#include <pthread.h>
+
 typedef struct {
 	int startIndex;  // first index in my region
 	int endIndex;    // last indexc in my region
