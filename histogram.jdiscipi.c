@@ -155,7 +155,7 @@ void* tallyGood(void* param) {
 	for(i = 0; i < MAXVAL; i++) {
 		localHistogram[i] = 0;
 	}
-	for(i = data->startIndex; i < data->endIndex; i++) {
+	for(i = data->startIndex; i <= data->endIndex; i++) {
 		localHistogram[values[i]] += 1;
 	}
 	pthread_mutex_lock(data->mutex);
