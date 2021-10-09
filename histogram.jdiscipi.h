@@ -6,7 +6,7 @@ typedef struct {
 	int* histogram;  // global histogram
 	pthread_mutex_t* mutex; // mutex for synchronization 
 }	ThreadInfo;
-#define N 1000000
-#define NUM_THREADS 4
+#define N 100000000
+#define NUM_THREADS 16
 #define MAXVAL 256
 
