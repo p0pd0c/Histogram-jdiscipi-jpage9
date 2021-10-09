@@ -27,18 +27,22 @@ int main() {
 
 	// Create data for threads
 	pthread_mutex_t mutex;
-	ThreadInfo t1data = {0, N/4, &histogram, &mutex};
-	ThreadInfo t2data = {N/4 + 1, N/2, &histogram, &mutex};
-	ThreadInfo t3data = {N/2 + 1, (3*N)/4, &histogram, &mutex};
-	ThreadInfo t4data = {(3*N)/4 + 1, N, &histogram, &mutex};
-	ThreadInfo threadData[] = {t1data, t2data, t3data, t4data};
+	ThreadInfo* threadData[NUM_THREADS];
+	for(i = 1; i <= NUM_THREADS; i++) {
+		ThreadInfo* threadDatum = malloc(sizeof(ThreadInfo));
+		threadDatum->startIndex = (N * (i - 1)) / NUM_THREADS;
+		threadDatum->endIndex = (N * i) / NUM_THREADS - 1; 
+		threadDatum->histogram = histogram;
+		threadDatum->mutex = &mutex;
+		threadData[i - 1] = threadDatum;
+	}
 	pthread_t tIds[NUM_THREADS];
 
 	// Start threads
 	for(i = 0; i < NUM_THREADS; i++) {
 		pthread_t tId;
 		tIds[i] = tId;
-		pthread_create(&tIds[i], NULL, tallyBad, &threadData[i]);
+		pthread_create(&tIds[i], NULL, tallyBad, threadData[i]);
 	}
 
 	// Wait for all threads
