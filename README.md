@@ -20,3 +20,6 @@ gcc histogram.jdiscipi.c -lpthread
 | Serial    | 3.058000  | 3.098000  | 3.005000  | 3.308000  | 3.040000  | 3.1018          |
 | Bad       | 77.890999 | 65.616997 | 76.075996 | 63.355000 | 76.143997 | 71.8165978      |
 | Good      | 1.499000  | 1.476000  | 2.279000  | 3.976000  | 1.473000  | 2.1406          |
+
+## TL;DR
+The difference between serial and good is not noticable until N grows large or NUM_THREADS is increased. The program evaluates the equality of the histograms in its output
